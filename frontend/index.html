@@ -111,7 +111,7 @@
     const numbers = studentIdValue.value
 
 
-    if (!firstName || !lastName || !studentId || !processed_image) {
+    if (!name || !surname || !numbers || !processed_image) {
       return iziToast.show({
         title: 'Warning!',
         message: 'Please fill all the input in form.',
@@ -127,7 +127,7 @@
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ firstName, lastName, studentId, processed_image })
+      body: JSON.stringify({ name, surname, numbers, processed_image })
     })
       .then(response => response.json())
       .then(data => {
