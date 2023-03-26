@@ -103,7 +103,7 @@
 
 <script>
 
-  let processed_image = null;
+  let image = null;
 
   const convertImage = async () => {
     const name = firstNameValue.value
@@ -111,7 +111,7 @@
     const numbers = studentIdValue.value
 
 
-    if (!name || !surname || !numbers || !processed_image) {
+    if (!name || !surname || !numbers || !image) {
       return iziToast.show({
         title: 'Warning!',
         message: 'Please fill all the input in form.',
@@ -127,7 +127,7 @@
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, surname, numbers, processed_image })
+      body: JSON.stringify({ name, surname, numbers, image })
     })
       .then(response => response.json())
       .then(data => {
@@ -162,7 +162,7 @@
     reader.addEventListener('load', (event) => {
       imageSelected.setAttribute('src', event.target.result);
       console.log(event.target.result)
-      processed_image = event.target.result
+      image = event.target.result
     });
     fileSelectedName.value = fileName
     reader.readAsDataURL(file);
