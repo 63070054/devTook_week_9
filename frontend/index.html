@@ -105,7 +105,7 @@
 
   let image = null;
 
-  const convertImage = async () => {
+  const convertImage = () => {
     const name = firstNameValue.value
     const surname = lastNameValue.value
     const numbers = studentIdValue.value
@@ -121,7 +121,10 @@
       });
     }
 
+    console.log("START CONVERT")
+
     const url = "http://44.201.74.206:8088/process-image"
+    outputImg.src = "/public/loading.gif"
     fetch(url, {
       method: 'POST',
       headers: {
@@ -151,7 +154,6 @@
           timeout: 5000
         });
       });
-
   }
 
   const fileInput = document.querySelector('#fileInput');
@@ -161,7 +163,6 @@
     const reader = new FileReader();
     reader.addEventListener('load', (event) => {
       imageSelected.setAttribute('src', event.target.result);
-      console.log(event.target.result)
       image = event.target.result
     });
     fileSelectedName.value = fileName
